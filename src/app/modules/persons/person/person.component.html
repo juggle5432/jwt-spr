@@ -1,0 +1,76 @@
+<div class="card " id="fc-1">
+    <div class="card-body ">
+        <div class="card-title text-center">
+            <h5 class="mark">Insert a new Person</h5>
+        </div>
+        <form #form="ngForm" autocomplete="off">
+
+
+            <div class="row">
+                <!--ngModel for to reference in the class ts-->
+
+                <div class="col-md-6 form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fa fa-user-circle" [class.green-icon]="Name.valid"
+                                    [class.red-icon]="Name.invalid && Name.touched"></i>
+                            </div>
+                        </div>
+                        <input placeholder="Insert a Name" name="Name" #Name="ngModel" class="form-control"
+                            [(ngModel)]="personService.currentPerson.Name" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fa fa-user-circle" [class.green-icon]="Lastname.valid"
+                                    [class.red-icon]="Lastname.invalid && Lastname.touched"></i>
+                            </div>
+                        </div>
+                        <input placeholder="Insert a lastname" name="Lastname" #Lastname="ngModel" class="form-control"
+                            [(ngModel)]="personService.currentPerson.Lastname" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fa fa-list-ol" [class.green-icon]="Age.valid"
+                                    [class.red-icon]="Age.invalid && Age.touched"></i>
+                            </div>
+                        </div>
+                        <input type="number" placeholder="Insert a age" name="Age" #Age="ngModel" class="form-control "
+                            [(ngModel)]="personService.currentPerson.Age" required>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fa fa-university" [class.green-icon]="University.valid"
+                                    [class.red-icon]="University.invalid && University.touched"></i>
+                            </div>
+                        </div>
+                        <input type="text" placeholder="Insert a university" name="University" #University="ngModel"
+                            class="form-control" [(ngModel)]="personService.currentPerson.University" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-success btn-block btn-large " type="submit" [disabled]="form.invalid"
+                        (click)="CreateAndUpdate(personService.currentPerson)"><i class="fa fa-save"></i> SAVE</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary btn-block btn-large" (click)="clear(personService.currentPerson)"><i
+                            class="fa fa-retweet"></i> CLEAR</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

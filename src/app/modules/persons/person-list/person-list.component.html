@@ -1,0 +1,47 @@
+<div class="card " id="fc-2">
+    <div class="card-body">
+        <h5 class="text-center mark">List of Persons</h5>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="filterPersons" placeholder="Search ..." [(ngModel)]="filterPersons" >
+                </div>
+            </div>
+        </div><!--[(ngModel)]="filterPersons"-->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-self-center">
+                <thead>
+                    <tr class="text-center badge-dark table-bordered">
+                        <th>Name</th>
+                        <th>LastName</th>
+                        <th>Age</th>
+                        <th>University</th>
+                        <th class="bg-info" >Edit</th>
+                        <th class="bg-info" >Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Indicar cuantos registros quiere por pagina-->
+                    <tr class="text-center" *ngFor="let person of personService.allPerson | filter: filterPersons |  paginate: {itemsPerPage:4,currentPage:p}">
+                        <td>{{person.Name | titlecase}}  </td>
+                        <td>{{person.Lastname | titlecase}}</td>
+                        <td>{{person.Age}}</td>
+                        <td>{{person.University | uppercase}}</td>
+                        <td class="cursor1">
+                            <a class="btn" (click)="edit(person)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+                        <td class="cursor2">
+                            <a class="btn text-danger " (click)="deletePerson(person.id)">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

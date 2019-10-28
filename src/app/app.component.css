@@ -1,0 +1,16 @@
+
+#titulo-secundario{
+   
+   background: #ffab08;
+        
+}
+#titulo-principal{
+    background: #ff9913;
+    color:#400040;
+    
+}
+#titulo-principal:hover{
+    color:#282828;
+}
+
+
